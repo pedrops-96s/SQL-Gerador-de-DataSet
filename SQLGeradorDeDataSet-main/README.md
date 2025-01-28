@@ -93,23 +93,3 @@ Tabela de Produtos:
    id_produto nome_produto categoria  preco_unitario
 0           1   ProdutoA    Eletrônicos        1500.00
 1           2   ProdutoB    Alimentos         45.50
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
