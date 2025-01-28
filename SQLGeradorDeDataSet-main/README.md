@@ -57,3 +57,11 @@ Este projeto gera dados simulados para vendas de uma loja fictícia, utilizando 
    
    ```bash
    pip install pandas faker
+
+
+   Execute o script gerador_dataset.py com o seguinte comando:
+
+bash
+Copiar
+python gerador_dataset.py
+
