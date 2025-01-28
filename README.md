@@ -1,25 +1,82 @@
-Gerador de Dataset de Vendas Fictícias
-Este projeto foi desenvolvido como parte de uma adaptação do conteúdo apresentado por Luciano Vasconcelos no workshop de DataBricks. Ele gera dados fictícios para simulação de vendas, clientes e produtos de uma loja fictícia. O código simula dados ao longo de 10 anos, com sazonalidade, para análise de vendas, incluindo Black Friday e Carnaval.
+Gerador de Dataset de Vendas
+Este projeto gera dados simulados para vendas de uma loja fictícia, utilizando o pacote Faker para a geração de dados aleatórios e o pandas para manipulação de tabelas. O código cria três tabelas principais: Vendas, Clientes e Produtos. Além disso, realiza uma análise simples sobre as vendas, como a receita total por mês e os produtos que não foram vendidos.
 
-Descrição
-O objetivo do projeto é criar um gerador de dados fictícios para análise de vendas de uma loja fictícia. O script utiliza Python, Faker e Pandas para gerar:
-
-Tabela de Vendas: Registra as compras realizadas ao longo de 10 anos, incluindo dados sobre o produto, cliente, quantidade e data.
-Tabela de Clientes: Gera 500 clientes fictícios com dados como nome, cidade, idade e data de cadastro.
-Tabela de Produtos: Cria 50 produtos fictícios, com categorias variadas e preços entre diferentes faixas.
-Além disso, o código também realiza algumas análises de vendas, como a receita total por mês e a quantidade de produtos não vendidos.
-
-Funcionalidades
-Geração de dados de vendas, clientes e produtos fictícios.
-Cálculos de vendas mensais, incluindo total de vendas e receita.
-Identificação de produtos não vendidos.
-Geração de relatórios em CSV das tabelas geradas.
 Tecnologias Utilizadas
 Python 3.x
-Pandas: Para manipulação e análise dos dados.
-Faker: Para geração de dados realistas de clientes, produtos e datas.
-Random: Para a geração de vendas e dados aleatórios.
-Como Usar
-Clone o repositório:
+Pandas: Para manipulação de dados e criação de tabelas.
+Faker: Para gerar dados fictícios de clientes e produtos.
+Random: Para gerar valores aleatórios.
+Estrutura do Projeto
+gerador_dataset.py: Script principal para gerar as tabelas de vendas, clientes e produtos, além de realizar algumas análises sobre os dados.
 
-Clone este projeto para sua máquina local usando o comando:
+Arquivos CSV gerados:
+
+tabela_vendas.csv: Contém as informações sobre as vendas realizadas.
+tabela_clientes.csv: Contém os dados dos clientes que realizaram compras.
+tabela_produtos.csv: Contém a lista de produtos disponíveis na loja.
+Descrição das Funções
+1. gerar_tabela_vendas()
+Objetivo: Gerar a tabela de vendas com base em uma distribuição sazonal, com maior volume de vendas durante datas como Black Friday e Carnaval.
+Gera:
+ID da venda
+ID do cliente (500 clientes únicos)
+ID do produto (com exceção dos produtos excluídos)
+Quantidade comprada
+Data da venda (dentro do intervalo de 2013 a 2023)
+2. gerar_tabela_clientes()
+Objetivo: Gerar a tabela de clientes com dados fictícios, incluindo nome, cidade, idade e data de cadastro.
+Gera:
+ID do cliente
+Nome completo (primeiro nome, segundo nome e sobrenome)
+Idade (entre 18 e 65 anos)
+Cidade
+Data de cadastro (entre 2012 e 2023)
+3. gerar_tabela_produtos()
+Objetivo: Gerar a tabela de produtos com categorias e preços aleatórios.
+Gera:
+ID do produto
+Nome do produto
+Categoria do produto (Eletrônicos, Móveis, Roupas, Beleza ou Alimentos)
+Preço unitário
+4. Análise de Vendas
+O código realiza uma análise das vendas por mês, calculando a quantidade total vendida e a receita total.
+Também exibe quais produtos não foram vendidos durante o período.
+Como Usar
+Clone o repositório ou baixe o arquivo gerador_dataset.py para o seu computador.
+
+Certifique-se de que você tem o Python 3.x e as bibliotecas pandas e faker instaladas. Caso não tenha, instale com:
+
+pip install pandas faker
+
+Execute o script gerador_dataset.py com o seguinte comando:
+python gerador_dataset.py
+
+Exemplo de Saída
+Após a execução do script, você verá uma saída no console com informações sobre os produtos não vendidos e um resumo das vendas por mês.
+
+Exemplos:
+
+Produtos Não Vendidos:
+ id_produto nome_produto categoria  preco_unitario
+0           4   ProdutoX    Roupas            99.99
+1           7   ProdutoY    Móveis            499.99
+
+Vendas por Mês:
+ ano_mes  total_vendas  total_receita
+0  2013-01           1200         300000
+1  2013-02           1450         400000
+
+Tabela de Vendas:
+ id_venda  id_cliente  id_produto  quantidade data_venda
+0         1          100           5           3  2013-01-05
+1         2          120          10           1  2013-01-15
+
+Tabela de Clientes:
+ id_cliente primeiro_nome segundo_nome  ultimo_nome    cidade  idade  data_cadastro
+0          1     João         da Silva       Oliveira    Recife     25     2015-07-12
+1          2     Maria         de Souza    Pereira      Salvador    34     2018-03-22
+
+Tabela de Produtos:
+ id_produto nome_produto categoria  preco_unitario
+0           1   ProdutoA    Eletrônicos        1500.00
+1           2   ProdutoB    Alimentos         45.50
