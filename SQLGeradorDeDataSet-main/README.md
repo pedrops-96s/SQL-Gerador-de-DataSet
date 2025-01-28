@@ -1,83 +1,98 @@
-# Gerador de Dataset de Vendas, Clientes e Produtos
+# Gerador de Dataset de Vendas
 
-Este projeto tem como objetivo gerar datasets sintéticos de vendas, clientes e produtos com base em um cenário fictício. O código utiliza a biblioteca `Faker` para gerar dados realistas e `pandas` para manipulação e análise de dados. Além disso, o código realiza análises simples, como a verificação de produtos não vendidos e a análise de vendas por mês.
+Este projeto gera dados simulados para vendas de uma loja fictícia, utilizando o pacote `Faker` para a geração de dados aleatórios e o `pandas` para manipulação de tabelas. O código cria três tabelas principais: **Vendas**, **Clientes** e **Produtos**. Além disso, realiza uma análise simples sobre as vendas, como a receita total por mês e os produtos que não foram vendidos.
 
-## Funcionalidades
+## Tecnologias Utilizadas
 
-1. **Geração de Dados de Vendas**:
-   - Gera dados de vendas de produtos de uma loja.
-   - Considera sazonalidade nas vendas, como aumento de vendas durante a Black Friday e a temporada de volta às aulas.
-   - Gera vendas mensais entre os anos de 2013 a 2023.
+- **Python 3.x**
+- **Pandas**: Para manipulação de dados e criação de tabelas.
+- **Faker**: Para gerar dados fictícios de clientes e produtos.
+- **Random**: Para gerar valores aleatórios.
 
-2. **Geração de Dados de Clientes**:
-   - Cria uma lista de clientes fictícios, com nome, cidade, idade e data de cadastro.
+## Estrutura do Projeto
 
-3. **Geração de Dados de Produtos**:
-   - Gera produtos com categorias e preços simulados, como Eletrônicos, Móveis, Roupas, Beleza e Alimentos.
+1. **gerador_dataset.py**: Script principal para gerar as tabelas de vendas, clientes e produtos, além de realizar algumas análises sobre os dados.
+   
+2. **Arquivos CSV gerados**:
+    - **tabela_vendas.csv**: Contém as informações sobre as vendas realizadas.
+    - **tabela_clientes.csv**: Contém os dados dos clientes que realizaram compras.
+    - **tabela_produtos.csv**: Contém a lista de produtos disponíveis na loja.
 
-4. **Análise de Vendas**:
-   - Realiza análise de vendas mensais, incluindo o total de vendas e a receita gerada.
-   - Verifica quais produtos não foram vendidos durante o período analisado.
+## Descrição das Funções
 
-5. **Exportação dos Dados**:
-   - Exporta as tabelas de vendas, clientes e produtos para arquivos CSV.
+### 1. `gerar_tabela_vendas()`
+   - **Objetivo**: Gerar a tabela de vendas com base em uma distribuição sazonal, com maior volume de vendas durante datas como Black Friday e Carnaval.
+   - **Gera**: 
+     - ID da venda
+     - ID do cliente (500 clientes únicos)
+     - ID do produto (com exceção dos produtos excluídos)
+     - Quantidade comprada
+     - Data da venda (dentro do intervalo de 2013 a 2023)
 
-## Pré-requisitos
+### 2. `gerar_tabela_clientes()`
+   - **Objetivo**: Gerar a tabela de clientes com dados fictícios, incluindo nome, cidade, idade e data de cadastro.
+   - **Gera**:
+     - ID do cliente
+     - Nome completo (primeiro nome, segundo nome e sobrenome)
+     - Idade (entre 18 e 65 anos)
+     - Cidade
+     - Data de cadastro (entre 2012 e 2023)
 
-Antes de rodar o código, é necessário instalar as dependências:
+### 3. `gerar_tabela_produtos()`
+   - **Objetivo**: Gerar a tabela de produtos com categorias e preços aleatórios.
+   - **Gera**:
+     - ID do produto
+     - Nome do produto
+     - Categoria do produto (Eletrônicos, Móveis, Roupas, Beleza ou Alimentos)
+     - Preço unitário
 
-```bash
-pip install pandas faker
-Como Usar
-Clone ou baixe o repositório para o seu computador.
+### 4. **Análise de Vendas**
+   - O código realiza uma análise das vendas por mês, calculando a **quantidade total vendida** e a **receita total**.
+   - Também exibe quais produtos não foram vendidos durante o período.
 
-Execute o script Python para gerar os dados e realizar a análise:
+## Como Usar
+
+1. Clone o repositório ou baixe o arquivo `gerador_dataset.py` para o seu computador.
+2. Certifique-se de que você tem o Python 3.x e as bibliotecas `pandas` e `faker` instaladas. Caso não tenha, instale com:
+   
+   ```bash
+   pip install pandas faker
+
+### Execute o script gerador_dataset.py com o seguinte comando:
 
 bash
 Copiar
 python gerador_dataset.py
-O script irá gerar três arquivos CSV:
-tabela_vendas.csv: Contém as informações de vendas geradas.
-tabela_clientes.csv: Contém as informações de clientes gerados.
-tabela_produtos.csv: Contém as informações de produtos gerados.
-Estrutura do Código
-Funções:
-gerar_tabela_vendas(): Gera a tabela de vendas com base em um período de 10 anos, considerando sazonalidade e produtos excluídos.
 
-gerar_tabela_clientes(): Gera uma tabela de clientes com 500 registros e informações como nome, cidade, idade e data de cadastro.
+### O script gerará os arquivos tabela_vendas.csv, tabela_clientes.csv e tabela_produtos.csv no mesmo diretório onde o script foi executado.
 
-gerar_tabela_produtos(): Gera uma tabela de 50 produtos com preços e categorias realistas.
+### Exemplo de Saída
+Após a execução do script, você verá uma saída no console com informações sobre os produtos não vendidos e um resumo das vendas por mês.
 
-Análise de Vendas: Após gerar as tabelas, o código executa:
+Exemplos:
 
-Análise de vendas por mês (total de vendas e receita por mês).
-Identificação de produtos não vendidos durante o período.
-Exemplo de Saída:
-Ao executar o código, a saída será algo como:
-
-python
-Copiar
 Produtos Não Vendidos:
-   id_produto nome_produto     categoria  preco_unitario
-3           4    Produto X    Eletrônicos          1499.0
-...
+   id_produto nome_produto categoria  preco_unitario
+0           4   ProdutoX    Roupas            99.99
+1           7   ProdutoY    Móveis            499.99
+
 Vendas por Mês:
    ano_mes  total_vendas  total_receita
-0  2013-01              120          12000
-...
+0  2013-01           1200         300000
+1  2013-02           1450         400000
+
 Tabela de Vendas:
    id_venda  id_cliente  id_produto  quantidade data_venda
-0         1           12           2           3  2013-01-15
-...
+0         1          100           5           3  2013-01-05
+1         2          120          10           1  2013-01-15
+
 Tabela de Clientes:
-   id_cliente primeiro_nome segundo_nome ultimo_nome     cidade  idade data_cadastro
-0           1       João            Silva          Souza   São Paulo     25      2015-05-12
-...
+   id_cliente primeiro_nome segundo_nome  ultimo_nome    cidade  idade  data_cadastro
+0          1     João         da Silva       Oliveira    Recife     25     2015-07-12
+1          2     Maria         de Souza    Pereira      Salvador    34     2018-03-22
+
 Tabela de Produtos:
-   id_produto nome_produto     categoria  preco_unitario
-0           1    Produto A    Eletrônicos          1500.0
-...
-Observações
-O código gera dados sintéticos e pode ser utilizado para testar modelos de machine learning ou para simulações de dados.
-A aleatoriedade do processo pode gerar resultados diferentes a cada execução, embora o seed do Faker e do random garanta a mesma sequência de geração em diferentes execuções.
+   id_produto nome_produto categoria  preco_unitario
+0           1   ProdutoA    Eletrônicos        1500.00
+1           2   ProdutoB    Alimentos         45.50
 
