@@ -63,6 +63,18 @@ Este projeto gera dados simulados para vendas de uma loja fictícia, utilizando 
 ```bash
    python gerador_dataset.py
 
+### O script gerará os arquivos tabela_vendas.csv, tabela_clientes.csv e tabela_produtos.csv no mesmo diretório onde o script foi executado.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
