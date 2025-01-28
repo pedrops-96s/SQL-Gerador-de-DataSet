@@ -60,7 +60,9 @@ Este projeto gera dados simulados para vendas de uma loja fictícia, utilizando 
 
 
 ### Execute o script gerador_dataset.py com o seguinte comando:
-python gerador_dataset.py
+```bash
+   python gerador_dataset.py
+
 
 
 
