@@ -60,10 +60,45 @@ Este projeto gera dados simulados para vendas de uma loja fictícia, utilizando 
 
 
 ### Execute o script gerador_dataset.py com o seguinte comando:
-```bash
-   python gerador_dataset.py
 
-### O script gerará os arquivos tabela_vendas.csv, tabela_clientes.csv e tabela_produtos.csv no mesmo diretório onde o script foi executado.
+python gerador_dataset.py
+
+### Exemplo de Saída
+Após a execução do script, você verá uma saída no console com informações sobre os produtos não vendidos e um resumo das vendas por mês.
+
+Exemplos:
+  ```yaml
+
+Produtos Não Vendidos:
+   id_produto nome_produto categoria  preco_unitario
+0           4   ProdutoX    Roupas            99.99
+1           7   ProdutoY    Móveis            499.99
+
+Vendas por Mês:
+   ano_mes  total_vendas  total_receita
+0  2013-01           1200         300000
+1  2013-02           1450         400000
+
+Tabela de Vendas:
+   id_venda  id_cliente  id_produto  quantidade data_venda
+0         1          100           5           3  2013-01-05
+1         2          120          10           1  2013-01-15
+
+Tabela de Clientes:
+   id_cliente primeiro_nome segundo_nome  ultimo_nome    cidade  idade  data_cadastro
+0          1     João         da Silva       Oliveira    Recife     25     2015-07-12
+1          2     Maria         de Souza    Pereira      Salvador    34     2018-03-22
+
+Tabela de Produtos:
+   id_produto nome_produto categoria  preco_unitario
+0           1   ProdutoA    Eletrônicos        1500.00
+1           2   ProdutoB    Alimentos         45.50
+
+
+
+
+
+
 
 
 
